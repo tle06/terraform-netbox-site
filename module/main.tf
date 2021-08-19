@@ -148,8 +148,8 @@ resource "netbox_dcim_rack" "racks" {
 /* -------------------------------------------------------------------------- */
 resource "netbox_dcim_device" "devices" {
   for_each ={ for device in local.devices : device.name => device }
-  device_type_id = 7
-  device_role_id = 4
+  device_type_id = each.value.device_type_id
+  device_role_id = each.value.device_role_id
   site_id = netbox_dcim_site.site.id
   tenant_id = local.site.tenant
   rack_id = netbox_dcim_rack.racks[each.value.rack_name].id
@@ -172,4 +172,25 @@ resource "netbox_dcim_device" "devices" {
     }
   }
 
+}
+
+resource "netbox_dcim_interface" "interfaces" {
+
+  device_id = netbox_dcim_device.example.id
+  type = "virtual"
+  name = "test interface"
+  tagged_vlan = [netbox_ipam_vlan.tagged-vlan.id]
+  connection_status = true
+  enabled = true
+  management_only = true
+  label = "label"
+  mac_address = "00:00:00:00:00:00"
+  mode = "access"
+  description = "test"
+  untagged_vlan_id = netbox_ipam_vlan.untagged-vlan.id
+  mtu = 1000
+  tags {
+    name = netbox_extras_tag.tag-two.name
+    slug = netbox_extras_tag.tag-two.slug
+  }
 }

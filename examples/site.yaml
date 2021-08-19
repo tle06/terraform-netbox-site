@@ -16,12 +16,16 @@ site:
       u_height: 12
   devices:
     - name: "BCN-ACP001"
+      device_type_id: 7
+      device_role_id: 4
       # manufacturer: 2
       # device_type: 2
       # device_role: 4
       # serial_number: "testggqg"
       # position_rack: 1
       rack_name: "BCN-RCK111"
+      interfaces:
+        - name: "Interface 1"
   prefixes:
     - prefix: "192.168.1.0/24"
       vrf: 1
@@ -29,12 +33,12 @@ site:
     - prefix: "192.168.2.0/24"
       vrf: 2
       description: "Test"
-  circruits:
-    - cuircuit_id: "test-circuit"
-      type: 1
-      provider: 4
-      commit_rate: 1048576
-      install_date: "2019-01-01"
-      termination_side: "A"
+  # circruits:
+  #   - cuircuit_id: "test-circuit"
+  #     type: 1
+  #     provider: 4
+  #     commit_rate: 1048576
+  #     install_date: "2019-01-01"
+  #     termination_side: "A"
 
         
