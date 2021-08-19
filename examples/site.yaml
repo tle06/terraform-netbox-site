@@ -1,0 +1,40 @@
+site:
+  name: "Test Site 01"
+  region: "Barcelona"
+  tenant: "Dark Store"
+  time_zone: "Europe/Madrid"
+  physical_address: "My address"
+  site_id: "S111"
+  # contact_name: "John doe"
+  # contact_email: "tle@tlnk.fr"
+  # contact_phone: "679948115"
+  # facility: ""
+  # Maintenance_Provider_Name: "Omega"
+  # description: "Test side from api"
+  racks:
+    - name: "BCN-RCK111"
+      u_height: 12
+  devices:
+    - name: "BCN-ACP001"
+      # manufacturer: 2
+      # device_type: 2
+      # device_role: 4
+      # serial_number: "testggqg"
+      # position_rack: 1
+      rack_name: "BCN-RCK111"
+  prefixes:
+    - prefix: "192.168.1.0/24"
+      vrf: 1
+      description: "Test"
+    - prefix: "192.168.2.0/24"
+      vrf: 2
+      description: "Test"
+  circruits:
+    - cuircuit_id: "test-circuit"
+      type: 1
+      provider: 4
+      commit_rate: 1048576
+      install_date: "2019-01-01"
+      termination_side: "A"
+
+        
