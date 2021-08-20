@@ -1,6 +1,6 @@
 resource "netbox_dcim_region" "example" {
-  name = "example"
-  slug = "example"
+  name        = "example"
+  slug        = "example"
   description = "example description"
 }
 
@@ -10,9 +10,9 @@ resource "netbox_tenancy_tenant" "example" {
 }
 
 module "example" {
-    source = "../"
-    path = "site.yaml"
-    region = netbox_dcim_region.example.id
-    tenant = netbox_tenancy_tenant.example.id
-    
+  source = "../"
+  path   = "site.yaml"
+  region = netbox_dcim_region.example.id
+  tenant = netbox_tenancy_tenant.example.id
+
 }
