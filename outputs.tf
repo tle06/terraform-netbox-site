@@ -19,7 +19,7 @@ output "racks" {
 }
 
 output "devices" {
-  description = "the devices generated"
+  description = "The devices generated"
   value       = netbox_dcim_device.devices
 }
 
