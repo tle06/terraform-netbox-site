@@ -152,7 +152,6 @@ No modules.
 | <a name="output_site_tag"></a> [site\_tag](#output\_site\_tag) | The site tag generated from the site\_id value |
 | <a name="output_vlans"></a> [vlans](#output\_vlans) | The VLANs generated |
 
-
 ## License
 
 MIT Licensed. See [LICENSE](LICENSE) for full details.

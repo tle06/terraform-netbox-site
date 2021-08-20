@@ -1,39 +1,39 @@
 output "input" {
-  description = "The yaml file converted to varible"
-  value       = local.raw_settings
+  description = "The site tag generated from the site_id value"
+  value       = module.example.input
 }
 
 output "site_tag" {
   description = "The site tag generated from the site_id value"
-  value       = netbox_extras_tag.site_tag
+  value       = module.example.site_tag
 }
 
 output "site" {
   description = "The full site generated"
-  value       = netbox_dcim_site.site
+  value       = module.example.site
 }
 
 output "racks" {
   description = "The racks generated and attached to the site"
-  value       = netbox_dcim_rack.racks
+  value       = module.example.racks
 }
 
 output "devices" {
   description = "The devices generated"
-  value       = netbox_dcim_device.devices
+  value       = module.example.devices
 }
 
 output "vlans" {
   description = "The VLANs generated"
-  value       = netbox_ipam_vlan.vlans
+  value       = module.example.vlans
 }
 
 output "interfaces" {
   description = "The interfaces attached to the devices"
-  value       = netbox_dcim_interface.interfaces
+  value       = module.example.interfaces
 }
 
 output "prefixes" {
   description = "The prefix added to the site."
-  value       = netbox_ipam_prefix.prefixes
+  value       = module.example.prefixes
 }
