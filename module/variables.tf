@@ -12,8 +12,3 @@ variable "tenant" {
   description = ""
   type = number
 }
-
-variable "tags" {
-  description = ""
-  type = list
-}

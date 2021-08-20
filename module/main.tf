@@ -99,7 +99,6 @@ locals {
       latitude = try(local.raw_settings["site"].latitude,local.default.site.latitude)
       comments = try(local.raw_settings["site"].comments,local.default.site.comments)
       facility = try(local.raw_settings["site"].facility,local.default.site.facility)
-      tags = var.tags
     
   }
   
@@ -183,13 +182,6 @@ resource "netbox_dcim_site" "site" {
   contact_email = try(local.site.contact_email, local.default.site.contact_email)
   comments = try(local.site.comments, local.default.site.comments)
 
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
 
   tags {
     name = netbox_extras_tag.site_tag.name
@@ -221,14 +213,6 @@ resource "netbox_dcim_rack" "racks" {
   outer_unit = try(each.value.outer_unit,local.default.rack.outer_unit)
   comments = try(each.value.comments,local.default.rack.comments)
 
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
-  
   tags {
     name = netbox_extras_tag.site_tag.name
     slug = netbox_extras_tag.site_tag.slug
@@ -256,15 +240,7 @@ resource "netbox_dcim_device" "devices" {
   face = try(each.value.face,local.default.device.face)
   platform_id = try(each.value.platform_id,local.default.device.platform_id)
   
-  
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
-  
+
   tags {
     name = netbox_extras_tag.site_tag.name
     slug = netbox_extras_tag.site_tag.slug
@@ -286,14 +262,6 @@ resource "netbox_ipam_vlan" "vlans" {
 	role_id = try(each.value.role_id, local.default.vlan.role_id)
   description = try(each.value.description, local.default.vlan.description)
   
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
-
   tags {
     name = netbox_extras_tag.site_tag.name
     slug = netbox_extras_tag.site_tag.slug
@@ -321,14 +289,6 @@ resource "netbox_dcim_interface" "interfaces" {
   untagged_vlan_id = each.value.untagged_vlan_id
   mtu = each.value.mtu
 
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
-
   tags {
     name = netbox_extras_tag.site_tag.name
     slug = netbox_extras_tag.site_tag.slug
@@ -353,13 +313,13 @@ resource "netbox_ipam_prefix" "prefixes" {
   role_id = try(each.value.role_id,local.default.prefix.role_id)
   is_pool = try(each.value.is_pool,local.default.prefix.is_pool)
 
-  dynamic "tags" {
-    for_each = local.site.tags
-    content {
-      name = tags.value.name
-      slug = tags.value.slug
-    }
-  }
+  # dynamic "tags" {
+  #   for_each = local.site.tags
+  #   content {
+  #     name = tags.value.name
+  #     slug = tags.value.slug
+  #   }
+  # }
 
   tags {
     name = netbox_extras_tag.site_tag.name

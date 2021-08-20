@@ -52,7 +52,7 @@ site:
               mac_address: "00:00:00:00:00:00" #Optional
               mode: "access" #Optional
               description: "example description" #Optional
-              untagged_vlan_id: 64 #Optional
+              untagged_vlan_id: 71 #Optional
               mtu: 1500 #Optional
             - name: "Interface 2"
               tagged_vlan: [400]
@@ -61,7 +61,7 @@ site:
       vrf: 1 #Optional
       description: "example description" #Optional
       status: "active"  #Optional
-      vlan_id: 64  #Optional
+      #vlan_id: "74"  #Optional
       is_pool: true  #Optional
     - prefix: "192.168.2.0/24"
   vlans:
