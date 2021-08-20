@@ -1,55 +1,79 @@
 site:
-  name: "Test Site 01"
+  name: "Example site 01"
   region: "Barcelona"
-  tenant: "Dark Store"
+  tenant: "Store"
   time_zone: "Europe/Madrid"
-  physical_address: "My address"
   site_id: "S111"
-  contact_name: "John doe"
-  contact_email: "tle@tlnk.fr"
-  contact_phone: "679948115"
-  facility: ""
-  Maintenance_Provider_Name: "Omega"
-  description: "Test side from api"
+  physical_address: "example of physical address"
+  status: "active" #Optional
+  facility: "example facility" #Optional
+  asn_id: 65000 #Optional
+  description: "example description" #Optional
+  shipping_address: "example shipping address" #Optional
+  latitude: "10.800000" #Optional
+  longitude : "11.800000" #Optional
+  contact_name: "John doe" #Optional
+  contact_phone: "+33734989876" #Optional
+  contact_email: "john.doe@example.com" #Optional
+  comments: "example comments" #Optional
   racks:
     - name: "BCN-RCK111"
-      u_height: 12
+      status: "active" #Optional
+      role_id: 1 #Optional
+      serial: "example serial" #Optional
+      asset_tag: "example asset tag" #Optional
+      type: "wall-frame" #Optional
+      width: 10 #Optional
+      u_height: 19 #Optional
+      desc_units: false #Optional
+      outer_width: 10 #Optional
+      outer_depth: 10 #Optional
+      outer_unit: "mm" #Optional
+      comments: "example comments" #Optional
       devices:
         - name: "BCN-ACP001"
           device_type_id: 7
           device_role_id: 4
-          # manufacturer: 2
-          # device_type: 2
-          # device_role: 4
-          # serial_number: "testggqg"
-          # position_rack: 1
-          rack_name: "BCN-RCK111"
+          comments: "exampel comments" #Optional
+          status: "active" #Optional
+          asset_tag: "example tag" #Optional
+          cluster_id: 1 #Optional
+          serial: "example serial" #Optional
+          face: "front" #Optional
+          platform_id: 1 #Optional
+          position_id: 1 #Optional
           interfaces:
             - name: "Interface 1"
               tagged_vlan: [300]
+              type: "1000base-t" #Optional
+              connection_status: true #Optional
+              enabled: true #Optional
+              management_only: false #Optional
+              label: "example label" #Optional
+              mac_address: "00:00:00:00:00:00" #Optional
+              mode: "access" #Optional
+              description: "example description" #Optional
+              untagged_vlan_id: 64 #Optional
+              mtu: 1500 #Optional
             - name: "Interface 2"
               tagged_vlan: [400]
   prefixes:
     - prefix: "192.168.1.0/24"
-      vrf: 1
-      description: "Test"
+      vrf: 1 #Optional
+      description: "example description" #Optional
+      status: "active"  #Optional
+      vlan_id: 64  #Optional
+      is_pool: true  #Optional
     - prefix: "192.168.2.0/24"
-      vrf: 2
-      description: "Test"
   vlans:
     - vid: "300"
-      name: "test terarform" 
+      name: "example vlan 300"
+      status: "reserved" #Optional
+      role_id: 1 #Optional
+      description: "example description" #Optional
     - vid: "400"
-      name: "test terarform"
-      # status: "reserved"
-      # role_id: 1
-      # description: "test terraform"
-  # circruits:
-  #   - cuircuit_id: "test-circuit"
-  #     type: 1
-  #     provider: 4
-  #     commit_rate: 1048576
-  #     install_date: "2019-01-01"
-  #     termination_side: "A"
+      name: "example vlan 400"
+
+
 
         

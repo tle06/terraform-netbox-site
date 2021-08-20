@@ -13,7 +13,6 @@ data "local_file" "input" {
 locals {
   default = {
     site = {
-      tag_color = "000000"
       facility = null
       description = null
       contact_name = null
@@ -153,20 +152,20 @@ resource "netbox_dcim_site" "site" {
   name = local.site.name
   slug = trimspace(lower(replace(local.site.name," ","-")))
   region_id = local.site.region
-  status = local.default.site.status
+  status = try(local.default.site.status, local.default.site.status)
   tenant_id = local.site.tenant
-  facility = local.site.facility
-  asn_id = local.default.site.asn_id
-  time_zone = local.site.time_zone
-  description = local.default.site.description
-  physical_address = local.site.physical_address
-  shipping_address = local.site.shipping_address
-  latitude = local.site.latitude
-  longitude = local.site.longitude
-  contact_name = local.site.contact_name
-  contact_phone = local.site.contact_phone
-  contact_email = local.site.contact_email
-  comments = local.site.comments
+  facility = try(local.site.facility, local.default.site.facility)
+  asn_id = try(local.default.site.asn_id, local.default.site.asn_id)
+  time_zone = try(local.site.time_zone, local.default.site.time_zone)
+  description = try(local.default.site.description, local.default.site.description)
+  physical_address = try(local.site.physical_address, local.default.site.physical_address)
+  shipping_address = try(local.site.shipping_address, local.default.site.shipping_address)
+  latitude = try(local.site.latitude, local.default.site.latitude)
+  longitude = try(local.site.longitude, local.default.site.longitude)
+  contact_name = try(local.site.contact_name, local.default.site.contact_name)
+  contact_phone = try(local.site.contact_phone, local.default.site.contact_phone)
+  contact_email = try(local.site.contact_email, local.default.site.contact_email)
+  comments = try(local.site.comments, local.default.site.comments)
 
   dynamic "tags" {
     for_each = local.site.tags
