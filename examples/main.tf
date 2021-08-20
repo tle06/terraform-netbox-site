@@ -17,7 +17,7 @@ resource "netbox_ipam_vlan" "untagged-vlan" {
 }
 
 module "test" {
-    source = "../module"
+    source = "../"
     path = "site.yaml"
     region = netbox_dcim_region.example.id
     tenant = netbox_tenancy_tenant.example.id
