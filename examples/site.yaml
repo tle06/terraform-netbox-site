@@ -41,7 +41,6 @@ site:
           serial: "example serial" #Optional
           face: "front" #Optional
           platform_id: 1 #Optional
-          position_id: "1" #Optional
           interfaces:
             - name: "Interface 1"
               tagged_vlan: [300]

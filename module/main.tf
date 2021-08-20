@@ -77,6 +77,10 @@ locals {
       role_id = null
       is_pool = null
     }
+
+    tag = {
+      color = "2196f3"
+    }
   }
 
   raw_settings = yamldecode(data.local_file.input.content)
@@ -144,6 +148,18 @@ locals {
 
 }
 
+
+/* -------------------------------------------------------------------------- */
+/*                                  Site tag                                  */
+/* -------------------------------------------------------------------------- */
+
+resource "netbox_extras_tag" "site_tag" {
+  name  = local.site.site_id
+  slug  = trimspace(lower(replace(local.site.site_id," ","-")))
+  color = local.default.tag.color
+}
+
+
 /* -------------------------------------------------------------------------- */
 /*                                  Add site                                  */
 /* -------------------------------------------------------------------------- */
@@ -173,6 +189,11 @@ resource "netbox_dcim_site" "site" {
       name = tags.value.name
       slug = tags.value.slug
     }
+  }
+
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
   }
     
 }
@@ -207,7 +228,11 @@ resource "netbox_dcim_rack" "racks" {
       slug = tags.value.slug
     }
   }
-    
+  
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
+  }
 
 }
 
@@ -230,7 +255,6 @@ resource "netbox_dcim_device" "devices" {
   serial = try(each.value.serial,local.default.device.serial)
   face = try(each.value.face,local.default.device.face)
   platform_id = try(each.value.platform_id,local.default.device.platform_id)
-  position_id = try(each.value.position_id,local.default.device.position_id)
   
   
   dynamic "tags" {
@@ -240,7 +264,11 @@ resource "netbox_dcim_device" "devices" {
       slug = tags.value.slug
     }
   }
-
+  
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
+  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -266,6 +294,10 @@ resource "netbox_ipam_vlan" "vlans" {
     }
   }
 
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
+  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -297,6 +329,10 @@ resource "netbox_dcim_interface" "interfaces" {
     }
   }
 
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
+  }
 }
 
 
@@ -324,5 +360,9 @@ resource "netbox_ipam_prefix" "prefixes" {
       slug = tags.value.slug
     }
   }
-  
+
+  tags {
+    name = netbox_extras_tag.site_tag.name
+    slug = netbox_extras_tag.site_tag.slug
+  }
 }
