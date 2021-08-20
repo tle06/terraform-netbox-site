@@ -10,7 +10,7 @@ resource "netbox_tenancy_tenant" "example" {
 }
 
 module "example" {
-  source = "../"
+  source = "../../"
   path   = "site.yaml"
   region = netbox_dcim_region.example.id
   tenant = netbox_tenancy_tenant.example.id
