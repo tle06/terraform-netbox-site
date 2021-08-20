@@ -61,7 +61,6 @@ site:
       vrf: 1 #Optional
       description: "example description" #Optional
       status: "active"  #Optional
-      #vlan_id: "74"  #Optional
       is_pool: true  #Optional
     - prefix: "192.168.2.0/24"
   vlans:
