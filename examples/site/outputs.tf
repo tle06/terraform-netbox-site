@@ -29,7 +29,7 @@ output "vlans" {
 }
 
 output "interfaces" {
-description = "The interfaces attached to the devices"
+  description = "The interfaces attached to the devices"
   value       = module.example.interfaces
 }
 
