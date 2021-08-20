@@ -14,18 +14,21 @@ site:
   racks:
     - name: "BCN-RCK111"
       u_height: 12
-  devices:
-    - name: "BCN-ACP001"
-      device_type_id: 7
-      device_role_id: 4
-      # manufacturer: 2
-      # device_type: 2
-      # device_role: 4
-      # serial_number: "testggqg"
-      # position_rack: 1
-      rack_name: "BCN-RCK111"
-      interfaces:
-        - name: "Interface 1"
+      devices:
+        - name: "BCN-ACP001"
+          device_type_id: 7
+          device_role_id: 4
+          # manufacturer: 2
+          # device_type: 2
+          # device_role: 4
+          # serial_number: "testggqg"
+          # position_rack: 1
+          rack_name: "BCN-RCK111"
+          interfaces:
+            - name: "Interface 1"
+              tagged_vlan: [300]
+            - name: "Interface 2"
+              tagged_vlan: [400]
   prefixes:
     - prefix: "192.168.1.0/24"
       vrf: 1
@@ -33,6 +36,14 @@ site:
     - prefix: "192.168.2.0/24"
       vrf: 2
       description: "Test"
+  vlans:
+    - vid: "300"
+      name: "test terarform" 
+    - vid: "400"
+      name: "test terarform"
+      # status: "reserved"
+      # role_id: 1
+      # description: "test terraform"
   # circruits:
   #   - cuircuit_id: "test-circuit"
   #     type: 1

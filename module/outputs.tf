@@ -7,6 +7,6 @@ output "setting" {
     value = local.prefixes
 }
 
-# output "tags" {
-#     value = netbox_extras_tag.tags
-# }
+output "debug" {
+    value = netbox_dcim_interface.interfaces
+}

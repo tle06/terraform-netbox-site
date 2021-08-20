@@ -1,3 +1,3 @@
-# output "tags" {
-#     value = module.test.tags
-# }
+output "debug" {
+    value = module.test.debug
+}
