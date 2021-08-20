@@ -5,12 +5,12 @@ site:
   time_zone: "Europe/Madrid"
   physical_address: "My address"
   site_id: "S111"
-  # contact_name: "John doe"
-  # contact_email: "tle@tlnk.fr"
-  # contact_phone: "679948115"
-  # facility: ""
-  # Maintenance_Provider_Name: "Omega"
-  # description: "Test side from api"
+  contact_name: "John doe"
+  contact_email: "tle@tlnk.fr"
+  contact_phone: "679948115"
+  facility: ""
+  Maintenance_Provider_Name: "Omega"
+  description: "Test side from api"
   racks:
     - name: "BCN-RCK111"
       u_height: 12

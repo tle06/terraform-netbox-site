@@ -69,6 +69,15 @@ locals {
       role_id = null
       description = null
     }
+
+    prefix = {
+      status = "active"
+      description = null
+      vrf_id = null
+      vlan_id = null
+      role_id = null
+      is_pool = null
+    }
   }
 
   raw_settings = yamldecode(data.local_file.input.content)
@@ -94,7 +103,6 @@ locals {
   racks = local.raw_settings["site"].racks
   prefixes = local.raw_settings["site"].prefixes
   vlans = local.raw_settings["site"].vlans
-
 
 
   devices_association = flatten([for rack in local.racks:[
@@ -290,4 +298,32 @@ resource "netbox_dcim_interface" "interfaces" {
     }
   }
 
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Prefixes                                  */
+/* -------------------------------------------------------------------------- */
+
+resource "netbox_ipam_prefix" "prefixes" {
+
+  for_each ={ for prefix in local.prefixes : prefix.prefix => prefix }
+  prefix = each.key
+  site_id = netbox_dcim_site.site.id
+  status = try(each.value.status,local.default.prefix.status)
+  description = try(each.value.description,local.default.prefix.description)
+  vrf_id = try(each.value.vrf_id,local.default.prefix.vrf_id)
+  tenant_id = local.site.tenant
+  vlan_id = try(each.value.vlan_id,local.default.prefix.vlan_id)
+  role_id = try(each.value.role_id,local.default.prefix.role_id)
+  is_pool = try(each.value.is_pool,local.default.prefix.is_pool)
+
+  dynamic "tags" {
+    for_each = local.site.tags
+    content {
+      name = tags.value.name
+      slug = tags.value.slug
+    }
+  }
+  
 }
