@@ -5,10 +5,10 @@ variable "path" {
 
 variable "region" {
   description = "The ID of region where the site will be located."
-  type = number
+  type        = number
 }
 
 variable "tenant" {
   description = "The ID of tenant that will be added to the site."
-  type = number
+  type        = number
 }
