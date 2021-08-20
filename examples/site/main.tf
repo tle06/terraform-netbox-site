@@ -9,13 +9,6 @@ resource "netbox_tenancy_tenant" "example" {
   slug = "example"
 }
 
-
-resource "netbox_ipam_vlan" "untagged-vlan" {
-  name = "untagged vlan"
-	vid = 500
-	tenant_id = netbox_tenancy_tenant.example.id
-}
-
 module "example" {
     source = "../"
     path = "site.yaml"
