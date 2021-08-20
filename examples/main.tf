@@ -1,12 +1,12 @@
 resource "netbox_dcim_region" "example" {
-  name = "terraform root region"
-  slug = "terraform-root-region"
-  description = "description for terraform"
+  name = "example"
+  slug = "example"
+  description = "example description"
 }
 
 resource "netbox_tenancy_tenant" "example" {
-  name = "test terraform"
-  slug = "test-terraform"
+  name = "example"
+  slug = "example"
 }
 
 
@@ -16,7 +16,7 @@ resource "netbox_ipam_vlan" "untagged-vlan" {
 	tenant_id = netbox_tenancy_tenant.example.id
 }
 
-module "test" {
+module "example" {
     source = "../"
     path = "site.yaml"
     region = netbox_dcim_region.example.id

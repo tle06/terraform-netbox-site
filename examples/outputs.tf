@@ -1,31 +1,31 @@
 output "input" {
-    value = module.test.input
+    value = module.example.input
 }
 
 output "site_tag" {
-    value = module.test.site_tag
+    value = module.example.site_tag
 }
 
 output "site" {
-    value = module.test.site
+    value = module.example.site
 }
 
 output "racks" {
-    value = module.test.racks
+    value = module.example.racks
 }
 
 output "devices" {
-    value = module.test.devices
+    value = module.example.devices
 }
 
 output "vlans" {
-    value = module.test.vlans
+    value = module.example.vlans
 }
 
 output "interfaces" {
-    value = module.test.interfaces
+    value = module.example.interfaces
 }
 
 output "prefixes" {
-    value = module.test.prefixes
+    value = module.example.prefixes
 }
